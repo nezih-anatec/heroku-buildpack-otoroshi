@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+# bin/compile BUILD_DIR CACHE_DIR ENV_DIR
+
+source ../env
+
+# URL to download the Otoroshi tarball (replace with the latest release version)
+OTOROSHI_URL="https://github.com/MAIF/otoroshi/releases/download/v${VERSION}/otoroshi-${VERSION}.zip"
+
+OTOROSHI_DIR="$BUILD_DIR/otoroshi"
+
+mkdir -p $OTOROSHI
+
+echo "Downloading Otoroshi from $OTOROSHI_URL..."
+wget -q $OTOROSHI_URL
+
+echo "Unzipping Otoroshi $VERSION..."
+unzip -q otoroshi-$VERSION.zip $OTOROSHI_DIR
+rm otoroshi-$VERSION.zip
+
+echo "Otoroshi has been downloaded and extracted to $OTOROSHI_DIR"
